@@ -6,8 +6,19 @@
   <li>type: <%= @article.color %></li>
 </div>
 <div>
-  <a href="/articles">Back</a>
-  <a href="#">Edit</a>
-  <a href="#">Delete</a>
+  <ul>
+    <li><a href="/articles">Back</a></li>
+    <li><a href="/articles/<%= @article.id %>/edit">Edit</a></li>
+    <li>
+    <form action="/articles/<%= @article.id %>" method="post">
+
+      <!-- get '/articles/:id', {"_method" => "delete"} --> 
+      <input type="hidden" name="_method" value="delete" />
+
+      <!-- submit button -->
+      <input type="submit" value="Delete" />
+    </form>
+    </li>
+  </ul>
 </div>
 

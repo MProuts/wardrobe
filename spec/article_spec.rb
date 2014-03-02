@@ -18,6 +18,7 @@ describe Article do
 
   let(:params) { { 
     "article" => { 
+      "article_type" => "shoe",
       "subtype" => "sandal", 
       "brand" => "Gucci", 
       "color" => "teal", 
@@ -59,11 +60,6 @@ describe Article do
   describe 'POST to /articles/new' do 
 
     describe 'with valid params' do
-      before(:each) do
-      end
-
-      after(:each) do
-      end
 
       it "should create a new instance of Article" do
         post '/articles/new', params
@@ -113,12 +109,68 @@ describe Article do
     end
   end
 
+
   # edit form
   describe "/articles/:id/edit" do
-    it "should render the edit form" do
-      get "articles/1/edit"
+    let(:new_article) { 
+      Article.create(:article_type => "shoe",
+                   :subtype => "sandal", 
+                   :brand => "Chacos",
+                   :color => "blue",
+                   :image_url => "chacos.jpg")
+    }
 
-      expect(last_response.body).to include("Edit Article")
+    it "should render the edit form" do
+      get "articles/#{new_article.id}/edit"
+
+      expect(last_response.body).to include("chacos.jpg")
     end
   end
+
+  describe 'POST /articles/:id' do
+    it "should update article's attribue in the database and redirect to show page" do
+      docs = Article.create(:article_type => "boot",
+                   :subtype => "combat boot", 
+                   :brand => "Doc Martin's",
+                   :color => "black", 
+                   :image_url => "docs.jpg")
+      post "articles/#{docs.id}/edit", { "article" => { "color" => "yellow" } }
+      binding.pry
+      follow_redirect!
+
+      expect(Article.find_by_article_type("boot").color).to eq("yellow")
+      expect(last_response.body).to include("yellow")
+    end
+  end
+
+  describe "DELETE /articles/:id" do
+    let(:params) do {
+      :article_type => "shoes",
+      :subtype => "clogs",
+      :brand => "Birkenstocks",
+      :color => "brown", 
+      :image_url => "birks.jpg"
+    }
+    end
+
+    it "should delete the specified article from the database" do
+      
+      birkenstocks = Article.create( params )
+
+      count = Article.all.count
+      delete "articles/#{birkenstocks.id}"
+      expect(Article.all.count).to eq(count - 1)
+    end
+
+    it "should redirect to the index page" do
+
+      birkenstocks = Article.create( params )
+      delete"articles/#{birkenstocks.id}"
+      follow_redirect!
+
+      expect(last_response.body).to include("Articles")
+    end
+
+  end
 end
+

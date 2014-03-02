@@ -1,4 +1,4 @@
-require "./article"
+require "./config/environment"
 
 run Sinatra::Application
 

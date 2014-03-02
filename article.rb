@@ -41,6 +41,18 @@ get "/articles/:id/edit" do
   erb :"articles/edit"
 end
 
+post "/articles/:id/edit" do
+  Article.find_by_id(params["id"]).update_attributes(params["article"])
+
+  redirect to("/articles/#{params["id"]}")
+end
+
+delete "/articles/:id" do
+  Article.destroy(params["id"])
+
+  redirect to("/articles")
+end
+
 # Helpers
 # =======
 

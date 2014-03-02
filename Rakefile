@@ -1,4 +1,4 @@
-require './article'
+require './config/environment'
 require 'sinatra/activerecord/rake'
 
 namespace :db do
