@@ -2,31 +2,43 @@ require 'pry'
 require "sinatra"
 require "sinatra/activerecord"
 
-set :database, "sqlite3:///db/application.db"
+set :database, "sqlite3:///db/development.db"
 # Model
 # =====
 #
-class Shoe < ActiveRecord::Base
+class Article < ActiveRecord::Base
   validates_presence_of :subtype, :brand, :color, :image_url
 end
 
 # Routes/Controller
 # =================
 # 
-get "/shoes" do
-  @shoes = Shoe.order('random()')
+get "/articles" do
+  @articles = Article.order('random()')
 
-  erb :"shoes/index"
+  erb :"articles/index"
 end
 
-get "/shoes/new" do
-  erb :"shoes/new"
+get "/articles/new" do
+  erb :"articles/new"
 end
 
-post "/shoes/new" do
-  Shoe.create(params["shoe"])
+post "/articles/new" do
+  Article.create(params["article"])
 
-  redirect to("/shoes")
+  redirect to("/articles")
+end
+
+get "/articles/:id" do
+  @article = Article.find_by_id(params["id"])
+
+  erb :"articles/show"
+end
+
+get "/articles/:id/edit" do
+  @article = Article.find_by_id(params["id"])
+
+  erb :"articles/edit"
 end
 
 # Helpers
@@ -57,10 +69,10 @@ module ApplicationHelpers
 
 end
 
-helpers ApplicationHelpers
-
 # helpers do 
 # is a shortcut for helpers = Module.new { }
 # ...
 # this creates an anonymous module
 # impossible to reference for testing
+helpers ApplicationHelpers
+

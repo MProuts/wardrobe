@@ -1,4 +1,4 @@
-require "./shoe"
+require "./article"
 
 run Sinatra::Application
 

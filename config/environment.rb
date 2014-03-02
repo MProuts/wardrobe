@@ -1,1 +1,1 @@
-require_relative '../shoe.rb'
+require_relative '../article.rb'
