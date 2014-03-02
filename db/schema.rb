@@ -10,9 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140227233214) do
+ActiveRecord::Schema.define(version: 20140302174150) do
 
-  create_table "shoes", force: true do |t|
+  create_table "articles", force: true do |t|
     t.string   "subtype"
     t.string   "brand"
     t.string   "color"
