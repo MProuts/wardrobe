@@ -1,13 +1,8 @@
-<h1>Articles</h1>
-  <% @articles.each do |article| %>
-    <div id=article_<%= article.id %> >
-      <a href="articles/<%= article.id %>">
-        <img src="<%= article.image_url %>" width=100px height=100px alt="article_<%= article.id %>"</img>
-      </a>
-      <li>type: <%= article.subtype %></li>
-      <li>type: <%= article.brand %></li>
-      <li>type: <%= article.color %></li>
-    </div>
-  <% end %>
-</ul>
+<h1>Tops</h1>
+<%= erb 'articles/_articles'.to_sym, :locals => { :articles => @tops } %>
+<a href="articles/tops/new">New</a>
 
+
+<h1>Bottoms</h1>
+<%= erb 'articles/_articles'.to_sym, :locals => { :articles => @bottoms } %>
+<a href="articles/bottoms/new">New</a>

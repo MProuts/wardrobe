@@ -14,16 +14,26 @@ end
 # =================
 # 
 get "/articles" do
-  @articles = Article.order('random()')
+  @tops = Article.where("article_type = 'top'").order('random()')
+  @bottoms = Article.where("article_type = 'bottom'").order('random()')
 
   erb :"articles/index"
 end
 
-get "/articles/new" do
+get "/articles/tops/new" do
+  @type = "top"
+
+  erb :"articles/new"
+end
+
+get "/articles/bottoms/new" do
+  @type = "bottom"
+
   erb :"articles/new"
 end
 
 post "/articles/new" do
+  binding.pry
   Article.create(params["article"])
 
   redirect to("/articles")

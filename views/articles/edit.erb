@@ -1,10 +1,11 @@
 <h1>Edit Article</h1>
 <form action="" method="POST">
+  <input type="hidden" name="article[article_type]" value="<%= @article.article_type %>" />
   <p>
   <label for="subtype">Type</label>
   <br>
   <input type="text" name="article[subtype]" id="subtype" 
-  value="<%= @article.subtype %>">
+  value="<%= @article.subtype %>" />
   </p>
   <p>
   <label for="brand">Brand</label>
