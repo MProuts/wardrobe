@@ -2,15 +2,16 @@
 <html>
 <head>
 <title><%= title %></title>
+<link rel="stylesheet" type="text/css" href="/stylesheets/slider.css" >
 </head>
 <body>
 <header>
-  <ul>
-    <li>User's Wardrobe</li>
-    <li><%= season %> Fashions</li>
-  </ul>
+  <h1>User's Wardrobe</h1>
 </header>
 <%= yield %>
 
 </body>
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script type="text/javascript" src="/javascripts/slider.js"></script> 
 </html>

@@ -1,13 +1,7 @@
 <% articles.each do |article| %>
-  <div id=article_<%= article.id %> >
-    <ul>
-      <a href="articles/<%= article.id %>">
-        <img src="<%= article.image_url %>" width=100px height=100px 
-        alt="article_<%= article.id %>"</img>
-      </a>
-      <li>type: <%= article.subtype %></li>
-      <li>brand: <%= article.brand %></li>
-      <li>color: <%= article.color %></li>
-    </ul>
-  </div>
+  <li>
+  <a href="/articles/<%= article.id %>">
+    <img src="<%= article.image_url %>" width=200px height=200px alt="article_<%= article.id %>"</img>
+  </a>
+  </li>
 <% end %>

@@ -96,4 +96,3 @@ end
 # this creates an anonymous module
 # impossible to reference for testing
 helpers ApplicationHelpers
-
