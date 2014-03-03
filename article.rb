@@ -33,7 +33,6 @@ get "/articles/bottoms/new" do
 end
 
 post "/articles/new" do
-  binding.pry
   Article.create(params["article"])
 
   redirect to("/articles")
