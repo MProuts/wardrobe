@@ -25,14 +25,18 @@ h1 {
   font-weight: 300;
 }
 
-#slider {
+h1 span {
+  background: black;
+}
+
+.slider {
   position: relative;
   //overflow: hidden;
   margin: 20px auto 0 auto;
   border-radius: 4px;
 }
 
-#slider ul {
+.slider ul {
   position: relative;
   margin: 0;
   padding: 0;
@@ -40,7 +44,7 @@ h1 {
   list-style: none;
 }
 
-#slider ul li {
+.slider ul li {
   position: relative;
   display: block;
   float: left;
@@ -54,7 +58,7 @@ h1 {
 }
 
 
-#slider ul li a {
+.slider ul li a {
   position: relative;
   margin: 0;
   padding: 0;

@@ -4,6 +4,7 @@ gem "sinatra"
 gem "sqlite3"
 gem "activerecord"
 gem "sinatra-activerecord"
+gem "rmagick"
 
 group :test do 
   gem "rack-test"

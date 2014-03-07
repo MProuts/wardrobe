@@ -38,6 +38,14 @@ post "/articles/new" do
   redirect to("/articles")
 end
 
+post "/upload" do
+  binding.pry
+  File.open('uploads/' + params['my_file'][:filename], "w") do |f|
+    f.write(params['my_file'][:tempfile].read)
+  end
+  return "The file was successfully uploaded!"
+end
+
 get "/articles/:id" do
   @article = Article.find_by_id(params["id"])
 

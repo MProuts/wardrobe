@@ -1,51 +1,62 @@
 jQuery(document).ready(function ($) {
+  function sliderify(slider_container) {
+      var ul = $(slider_container.children('ul')[0]),
+          li = $(ul.children('li')),
+          slideCount = li.length,
+          slideWidth = li.width(),
+          slideHeight = li.height(),
+          sliderUlWidth = slideCount * slideWidth;
+    slider_container.children(".control_next").click(function(e){
+      e.preventDefault()
+      moveLeft(slider_container)
+    });
+    slider_container.children(".control_prev").click(function(e){
+      e.preventDefault()
+      moveRight(slider_container)
+    });
 
-  $('#checkbox').change(function(){
-    setInterval(function () {
-        moveRight();
-    }, 3000);
-  });
-  
-	var slideCount = $('#slider ul li').length;
-	var slideWidth = $('#slider ul li').width();
-	var slideHeight = $('#slider ul li').height();
-	var sliderUlWidth = slideCount * slideWidth;
-	
-  //#slider window
-	$('#slider').css({ width: slideWidth, height: slideHeight });
-	
-  //long ul block
-	$('#slider ul').css({ width: sliderUlWidth, marginLeft: - slideWidth });
-	
-    $('#slider ul li:last-child').prependTo('#slider ul');
+  slider_container.css({ width: slideWidth, height: slideHeight });
+	$(slider_container.children('ul')).css({ width: sliderUlWidth, marginLeft: - slideWidth });
 
-    function moveLeft() {
-        $('#slider ul').animate({
+  }
+
+
+    function moveLeft(slider_container) {
+      var ul = $(slider_container.children('ul')[0]),
+          lc = $(ul.children('li:last-child')),
+          li = $(ul.children('li')),
+          slideCount = li.length,
+          slideWidth = li.width(),
+          slideHeight = li.height(),
+          sliderUlWidth = slideCount * slideWidth;
+	
+        ul.animate({
             left: + slideWidth
         }, 200, function () {
-            $('#slider ul li:last-child').prependTo('#slider ul');
-            $('#slider ul').css('left', '');
+            lc.prependTo(ul);
+            ul.css('left', '');
         });
     };
 
-    function moveRight() {
-        $('#slider ul').animate({
+    function moveRight(slider_container) {
+      var ul = $(slider_container.children('ul')[0]),
+          fc = $(ul.children('li:first-child')),
+          li = $(ul.children('li')),
+          slideCount = li.length,
+          slideWidth = li.width(),
+          slideHeight = li.height(),
+          sliderUlWidth = slideCount * slideWidth;
+	
+        ul.animate({
             left: - slideWidth
         }, 200, function () {
-            $('#slider ul li:first-child').appendTo('#slider ul');
-            $('#slider ul').css('left', '');
+            fc.prependTo(ul);
+            ul.css('left', '');
         });
     };
 
-    $('a.control_prev').click(function (e) {
-        moveLeft();
-        e.preventDefault();
+    $('.slider').each(function(){
+      sliderify($(this))
     });
-
-    $('a.control_next').click(function (e) {
-        moveRight();
-        e.preventDefault();
-    });
-
 });    
 

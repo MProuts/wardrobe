@@ -15,6 +15,13 @@
   </p>
   <label for="image_url">Image URL</label><br />
   <input type="text" name="article[image_url]" id="image_url">
-  <p>
   <input type="submit">
+</form>
+
+<form action="/upload" method="post" enctype="multipart/form-data">
+  <p>
+  <label for="image_upload">Upload</label><br />
+  <input id="image_upload" type="file" name="my_file">
+  </p>
+  <input type="submit" value="Upload">
 </form>

@@ -12,17 +12,20 @@
 </div>
 -->
 
-<h1>Tops</h1>
-<div id="slider">
+<div class="slider">
   <a href="#" class="control_next">></a>
   <a href="#" class="control_prev"><</a>
   <ul>
-<%= erb 'articles/_articles'.to_sym, :locals => { :articles => @tops } %>
-</ul>
+    <%= erb 'articles/_articles'.to_sym, :locals => { :articles => @tops } %>
+  </ul>
 </div>
 <a href="articles/tops/new">New</a>
 
-
-<h1>Bottoms</h1>
-<%= erb 'articles/_articles'.to_sym, :locals => { :articles => @bottoms } %>
+<div class="slider">
+  <a href="#" class="control_next">></a>
+  <a href="#" class="control_prev"><</a>
+  <ul>
+    <%= erb 'articles/_articles'.to_sym, :locals => { :articles => @bottoms } %>
+  </ul>
+</div>
 <a href="articles/bottoms/new">New</a>
