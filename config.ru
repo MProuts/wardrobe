@@ -6,6 +6,7 @@ end
 
 use Rack::Static, :root => 'public', :urls => ["/images","/javascripts","/stylesheets"]
 
+use UsersController
 use ArticlesController
 run ApplicationController
 

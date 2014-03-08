@@ -10,16 +10,42 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140302185708) do
+ActiveRecord::Schema.define(version: 20140308210434) do
+
+  create_table "article_types", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "articles", force: true do |t|
     t.string   "subtype"
     t.string   "brand"
     t.string   "color"
     t.string   "image_url"
+    t.integer  "user_id"
+    t.integer  "article_type_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "article_type"
+  end
+
+  create_table "outfit_articles", force: true do |t|
+    t.integer  "outfit_id"
+    t.integer  "article_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "outfits", force: true do |t|
+    t.date     "date_worn"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "users", force: true do |t|
+    t.string "username"
+    t.string "email"
   end
 
 end

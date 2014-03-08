@@ -1,5 +1,4 @@
 class ArticlesController < ApplicationController
-  binding.pry
   get "/articles" do
     @tops = Article.where("article_type = 'top'").order('random()')
     @bottoms = Article.where("article_type = 'bottom'").order('random()')
