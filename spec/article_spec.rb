@@ -2,20 +2,10 @@ require File.dirname(__FILE__) + '/spec_helper'
 require 'rack/test'
 load 'Rakefile'
 
-set :environment, :test
-
 describe Article do
   # let(:app) { subject }
   include Rack::Test::Methods
   
-  before(:all) do
-    Rake::Task["db:migrate"].invoke
-  end
-
-  after(:all) do
-    FileUtils.rm("./db/test.db")
-  end
-
   let(:params) { { 
     "article" => { 
       "article_type" => "shoe",
@@ -32,18 +22,11 @@ describe Article do
     Sinatra::Application 
   end
 
-  describe "helpers" do
-  include ApplicationHelpers
-
-    it "should return title" do
-      expect(season).to eq("Winter")
-    end
-  end
-
   # index
   describe '/articles' do
     it "should render index correctly" do
       get '/articles'
+
       expect(last_response).to be_ok
     end
   end
