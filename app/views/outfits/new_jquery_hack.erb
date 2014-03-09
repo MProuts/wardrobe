@@ -1,6 +1,5 @@
 </div> <!-- no container -->
 
-<form action="/outfits" method="post">
 <div class="slider" for="top_id">
   <a href="#" class="control_next">></a>
   <a href="#" class="control_prev"><</a>
@@ -19,15 +18,18 @@
 
 <div class="wrapper">
   <div class="well">
+    <form action="/outfits" method="post">
+      <input id="top_id" type="text" name="outfit[top_id]">
+      <input id="bottom_id" type="text" name="outfit[bottom_id]">
       <fieldset>
         <legend>Date</legend>
         <input type="date" name="outfit[date_worn]" value="<%= Date.today.to_s %>">
         <input id="submit_button" type="submit" class="btn btn-primary btn-large btn-block" 
           value="Wear">
       </fieldset>
-    </div>
-  </div>
-</form>
+    </form>
+</div>
 
+<div id="test"></div>
 
-<div> <!-- no container -->
+  <div> <!-- no container -->
