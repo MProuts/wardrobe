@@ -8,6 +8,7 @@ gem "require_all"
 gem "rmagick"
 gem "rake"
 gem 'database_cleaner', git: 'https://github.com/bmabey/database_cleaner.git'
+gem 'kronic'
 
 group :test do 
   gem "rspec"

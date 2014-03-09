@@ -2,7 +2,7 @@
 <table class=table>
   <% @outfits.each do |outfit| %>
   <tr>
-    <td><%= outfit.date_worn %></td>
+    <td><%= Kronic.format(outfit.date_worn) %></td>
     <% outfit.articles.each do |article| %>
       <td><%= article.image_tag %></td>
     <% end %>
