@@ -6,7 +6,9 @@ class OutfitsController < ApplicationController
   end
 
   get '/outfits/new' do
-    @articles = Article.all
+    #TODO: GET METAAAA
+    @tops = Article.all.where(:article_type_id => 1)
+    @bottoms = Article.all.where(:article_type_id => 2)
 
     erb :'outfits/new'
   end

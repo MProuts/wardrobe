@@ -1,31 +1,35 @@
-<!--
-<h1>Incredibly Basic Slider</h1>
-<div id="slider">
-  <a href="#" class="control_next">></a>
-  <a href="#" class="control_prev"><</a>
-  <ul>
-    <li>SLIDE 1</li>
-    <li style="background: #aaa;">SLIDE 2</li>
-    <li>SLIDE 3</li>
-    <li style="background: #aaa;">SLIDE 4</li>
-  </ul>  
-</div>
--->
+</div> <!-- no container -->
 
 <div class="slider">
   <a href="#" class="control_next">></a>
   <a href="#" class="control_prev"><</a>
   <ul>
-    <%= erb 'articles/_articles'.to_sym %>
+    <%= erb 'outfits/_articles'.to_sym, :locals => { :articles => @tops } %>
   </ul>
 </div>
-<a href="articles/tops/new">New</a>
 
-<!-- <div class="slider">
+<div class="slider">
   <a href="#" class="control_next">></a>
   <a href="#" class="control_prev"><</a>
   <ul>
-    <%= erb 'articles/_articles'.to_sym, :locals => { :articles => @bottoms } %>
+    <%= erb 'outfits/_articles'.to_sym, :locals => { :articles => @bottoms } %>
   </ul>
 </div>
-<a href="articles/bottoms/new">New</a>-->
+
+<div class="wrapper">
+  <div class="well">
+    <form action="/outfits" method="new">
+      <input type="hidden" name="outfit[top_id]" value="1">
+      <input type="hidden" name="outfit[bottom_id]" 
+      value="<!--%= Article.find_by_tag_id() %-->">
+      <fieldset>
+        <legend>Date</legend>
+        <input type="date" name="outfit[date_worn]" value="<%= Date.today.to_s %>">
+        <input type="submit" class="btn btn-primary btn-large btn-block" 
+        href="articles/tops/new" value="Wear">
+      </fieldset>
+    </form>
+</div>
+<script>alert($(".slider li").val());</script>
+
+  <div> <!-- no container -->
