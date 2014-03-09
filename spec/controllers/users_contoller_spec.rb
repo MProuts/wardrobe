@@ -3,7 +3,9 @@ require_relative '../spec_helper'
 describe UsersController do
 
   describe 'get /login' do
-    it "should render the login form"
+    it "should render the login form" do
+      pending
+    end
   end
 
   describe 'get /register' do

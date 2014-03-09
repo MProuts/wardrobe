@@ -1,4 +1,4 @@
-class OutfitArticles < ActiveRecord::Base
+class OutfitArticle < ActiveRecord::Base
   belongs_to :article
   belongs_to :outfit
 end

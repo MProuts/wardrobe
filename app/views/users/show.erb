@@ -1,14 +1,22 @@
 <h1><%= @user.username %></h1>
-<table>
+<table class="table">
   <tr>
-    <td>Email:</td>
+    <th>Email</th>
+    <th></th>
+    <th></th>
+  </tr>
+  <tr>
     <td><%= @user.email %></td>
+    <td>
+      <a href="/users/<%= @user.username %>/edit">Edit</a>
+    </td>
+    <td>
+      <form action="/users/<%= @user.username %>" method="post">
+        <input type="hidden" name="_method" value="delete">
+        <a type="submit">Delete</a>
+      </form>
+    </tr>
   </tr>
 </table>
-<p>
-<a href="/users/<%= @user.username %>/edit" class="btn btn-success">Edit</a>
-<form action="/users/<%= @user.username %>" method="post">
-  <input type="hidden" name="_method" value="delete">
-  <button type="submit" class="btn btn-danger">Delete</button>
-</form>
+
 </p>

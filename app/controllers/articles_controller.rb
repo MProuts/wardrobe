@@ -1,35 +1,28 @@
 class ArticlesController < ApplicationController
   get "/articles" do
-    @tops = Article.where("article_type = 'top'").order('random()')
-    @bottoms = Article.where("article_type = 'bottom'").order('random()')
+    @article_types = ArticleType.all
+    @articles = Article.all
 
     erb :"articles/index"
   end
 
-  get "/articles/tops/new" do
-    @type = "top"
-
+  get "/articles/new" do
+    @article_types = ArticleType.all
     erb :"articles/new"
   end
 
-  get "/articles/bottoms/new" do
-    @type = "bottom"
-
-    erb :"articles/new"
-  end
-
-  post "/articles/new" do
+  post "/articles" do
+    binding.pry
     Article.create(params["article"])
+    binding.pry
 
     redirect to("/articles")
   end
 
   post "/upload" do
-    binding.pry
     File.open('uploads/' + params['my_file'][:filename], "w") do |f|
       f.write(params['my_file'][:tempfile].read)
     end
-    return "The file was successfully uploaded!"
   end
 
   get "/articles/:id" do
@@ -39,12 +32,13 @@ class ArticlesController < ApplicationController
   end
 
   get "/articles/:id/edit" do
+    @article_types = ArticleType.all
     @article = Article.find_by_id(params["id"])
 
     erb :"articles/edit"
   end
 
-  post "/articles/:id/edit" do
+  put "/articles/:id" do
     Article.find_by_id(params["id"]).update_attributes(params["article"])
 
     redirect to("/articles/#{params["id"]}")

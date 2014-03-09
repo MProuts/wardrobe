@@ -1,27 +1,30 @@
-<h1>New <%= @type.capitalize %></h1>
-<form action="../new" method="POST">
-  <input type="hidden" name="article[article_type]" value="<%= @type %>">
-  <p>
-  <label for="subtype">Type</label><br />
-  <input type="test" name="article[subtype]" id="subtype">
-  </p>
-  <p>
-  <label for="brand">Brand</label><br />
-  <input type="text" name="article[brand]" id="brand">
-  </p>
-  <p>
-  <label for="color">Color</label><br />
-  <input type="text" name="article[color]" id="color">
-  </p>
-  <label for="image_url">Image URL</label><br />
-  <input type="text" name="article[image_url]" id="image_url">
-  <input type="submit">
+<h1>New Article</h1>
+
+<form action="/articles" method="POST">
+  <fieldset>
+    <legend>Type</legend>
+    <% @article_types.each do |article_type| %>
+      <input type="radio" name="article[article_type_id]" 
+      value="<%= article_type.id %>"> <%= article_type.name %><br><br>
+    <% end %>
+  </fieldset>
+  <fieldset>
+    <legend>Subtype</legend>
+    <input type="text" name="article[subtype]" id="subtype" placeholder="e.g. sweater">
+  </fieldset>
+  <fieldset>
+    <legend>Brand</legend>
+    <input type="text" name="article[brand]" id="brand">
+  </fieldset>
+  <fieldset>
+    <legend>Color</legend>
+    <input type="text" name="article[color]" id="color">
+  </fieldset>
+  <fieldset>
+    <legend>Image URL</legend>
+    <input type="text" name="article[image_url]" id="image_url">
+  </fieldset>
+  <br><br>
+  <button type="submit" class="btn btn-large btn-warning">Submit</button>
 </form>
 
-<form action="/upload" method="post" enctype="multipart/form-data">
-  <p>
-  <label for="image_upload">Upload</label><br />
-  <input id="image_upload" type="file" name="my_file">
-  </p>
-  <input type="submit" value="Upload">
-</form>

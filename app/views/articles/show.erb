@@ -8,18 +8,17 @@
 </div>
 <div>
   <ul>
-    <li><a href="/articles">Back</a></li>
-    <li><a href="/articles/<%= @article.id %>/edit">Edit</a></li>
-    <li>
+    <p>
+
+    <a class='btn btn-default' href="/articles">Back</a>
+    <a class="btn btn-success" href="/articles/<%= @article.id %>/edit">Edit</a>
+
     <form action="/articles/<%= @article.id %>" method="post">
-
-      <!-- get '/articles/:id', {"_method" => "delete"} --> 
       <input type="hidden" name="_method" value="delete" />
-
-      <!-- submit button -->
-      <input type="submit" value="Delete" />
+      <button class="btn btn-danger" type="submit">Delete</button>
     </form>
-    </li>
+    </p>
+    <a>
   </ul>
 </div>
 
