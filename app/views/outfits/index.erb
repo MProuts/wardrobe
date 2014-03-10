@@ -2,7 +2,11 @@
 <table class=table>
   <% @outfits.each do |outfit| %>
   <tr>
-    <td><%= Kronic.format(outfit.date_worn) %></td>
+    <td>
+      <a href="/outfits/<%= outfit.id %>">
+        <%= Kronic.format(outfit.date_worn) %>
+      </a>
+    </td>
     <% outfit.articles.each do |article| %>
       <td><%= article.image_tag %></td>
     <% end %>

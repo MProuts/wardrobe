@@ -97,4 +97,24 @@ describe OutfitsController do
     end
   end
 
+  # (D)elete
+  describe 'delete /outfits/:id' do
+    before do
+      @o = Outfit.create(:date_worn => Date.today)
+    end
+
+    it "should delete the appropriate record" do
+      delete "/outfits/#{@o.id}"
+
+      expect(Outfit.all.count).to eq(0)
+    end
+
+    it "should redirect to the index page" do
+      delete "/outfits/#{@o.id}"
+      follow_redirect!
+
+    expect(last_response.body).to include("Outfit History")
+    end
+  end
+
 end
