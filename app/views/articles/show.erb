@@ -1,22 +1,38 @@
 <h1>Article</h1>
-<div id=@article_<%= @article.id %> >
-  <img src="<%= @article.image_url %>" width=100px height=100px alt="@article_<%= @article.id %>"</img>
-  <li>type: <%= @article.article_type %></li>
-  <li>subtype: <%= @article.subtype %></li>
-  <li>brand: <%= @article.brand %></li>
-  <li>color: <%= @article.color %></li>
+
+<table class="table">
+  <tr>
+    <th>Image</th>
+    <th>Type</th>
+    <th>Subtype</th>
+    <th>Brand</th>
+    <th>Color</th>
+    <th></th>
+    <th></th>
+  </tr>
+  <tr>
+    <td>
+      <img src="<%= @article.image_url %>" width=100px height=100px alt="@article_<%= @article.id %>"</img>
+    </td>
+    <td><%= @article.article_type.name %></td>
+    <td><%= @article.subtype %></td>
+    <td><%= @article.brand %></td>
+    <td><%= @article.color %></td>
+    <td>
+      <a href="/articles/<%= @article.id %>/edit">Edit</a>
+    </td>
+    <td>
+    <form action="/articles/<%= @article.id %>" method="post">
+      <input type="hidden" name="_method" value="delete" />
+      <input type="submit" value="Delete">
+    </form>
+  </td>
+  </tr>
 </div>
 <div>
   <ul>
     <p>
 
-    <a class='btn btn-default' href="/articles">Back</a>
-    <a class="btn btn-success" href="/articles/<%= @article.id %>/edit">Edit</a>
-
-    <form action="/articles/<%= @article.id %>" method="post">
-      <input type="hidden" name="_method" value="delete" />
-      <button class="btn btn-danger" type="submit">Delete</button>
-    </form>
     </p>
     <a>
   </ul>

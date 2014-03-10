@@ -1,30 +1,32 @@
 <h1>New Article</h1>
 
-<form action="/articles" method="POST">
-  <fieldset>
-    <legend>Type</legend>
-    <% @article_types.each do |article_type| %>
-      <input type="radio" name="article[article_type_id]" 
-      value="<%= article_type.id %>"> <%= article_type.name %><br><br>
-    <% end %>
-  </fieldset>
-  <fieldset>
-    <legend>Subtype</legend>
-    <input type="text" name="article[subtype]" id="subtype" placeholder="e.g. sweater">
-  </fieldset>
-  <fieldset>
-    <legend>Brand</legend>
-    <input type="text" name="article[brand]" id="brand">
-  </fieldset>
-  <fieldset>
-    <legend>Color</legend>
-    <input type="text" name="article[color]" id="color">
-  </fieldset>
-  <fieldset>
-    <legend>Image URL</legend>
-    <input type="text" name="article[image_url]" id="image_url">
-  </fieldset>
-  <br><br>
-  <button type="submit" class="btn btn-large btn-warning">Submit</button>
-</form>
+<div class="well">
+  <form action="/articles" method="POST">
+    <fieldset>
+      <legend>Type</legend>
+      <% @article_types.each do |article_type| %>
+        <input type="radio" name="article[article_type_id]" 
+        value="<%= article_type.id %>"> <%= article_type.name %><br><br>
+      <% end %>
+    </fieldset>
+    <fieldset>
+      <legend>Subtype</legend>
+      <input type="text" name="article[subtype]" id="subtype" placeholder="e.g. sweater">
+    </fieldset>
+    <fieldset>
+      <legend>Brand</legend>
+      <input type="text" name="article[brand]" id="brand">
+    </fieldset>
+    <fieldset>
+      <legend>Color</legend>
+      <input type="text" name="article[color]" id="color">
+    </fieldset>
+    <fieldset>
+      <legend>Image URL</legend>
+      <input type="text" name="article[image_url]" id="image_url">
+    </fieldset>
+    <br><br>
+    <button type="submit" class="btn btn-large btn-warning">Submit</button>
+  </form>
+</div>
 

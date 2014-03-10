@@ -1,32 +1,26 @@
 <h1>Outfit History</h1>
-<table class=table>
-  <% @outfits.each do |outfit| %>
-  <tr>
-    <td>
-      <a href="/outfits/<%= outfit.id %>">
-        <%= Kronic.format(outfit.date_worn) %>
-      </a>
-    </td>
-    <% outfit.articles.each do |article| %>
-      <td><%= article.image_tag %></td>
+<div class="well">
+  <table class=table>
+    <% @outfits.each do |outfit| %>
+      <tr>
+        <td>
+          <a href="/outfits/<%= outfit.id %>">
+            <%= Kronic.format(outfit.date_worn) %>
+          </a>
+        </td>
+        <% outfit.articles.each do |article| %>
+          <td><%= article.image_tag %></td>
+        <% end %>
+        <td><a href="/outfits/<%= outfit.id %>/edit">Edit</a></td>
+        <td>
+          <form action="/outfits/<%= outfit.id %>" method="post">
+            <input type=hidden name="_method" value="delete">
+            <input type="submit" value="delete">
+          </form>
+        </td>
+      </tr>
     <% end %>
-    <td><a href="/outfits/<%= outfit.id %>/edit">Edit</a></td>
-    <td>
-      <form action="/outfits/<%= outfit.id %>" method="post">
-        <input type=hidden name="_method" value="delete">
-        <input type="submit" value="delete">
-      </form>
-    </td>
-  </tr>
-  <% end %>
-  <tr>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td>
-      <a class="btn btn-large btn-warning" href="/outfits/new">New</a>
-    </td>
-  </tr>
-</table>
+  </table>
+  <a class="btn btn-block btn-large btn-warning" href="/outfits/new">New</a>
+</div>
 

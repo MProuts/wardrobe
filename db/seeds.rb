@@ -27,9 +27,9 @@ end
 end
 
 5.times do |i|
-  OutfitArticles.create(:article_id => i + 1, 
+  OutfitArticle.create(:article_id => i + 1, 
                         :outfit_id => i + 1)
-  OutfitArticles.create(:article_id => i + 6, 
+  OutfitArticle.create(:article_id => i + 6, 
                         :outfit_id => i + 1)
 end
   

@@ -1,12 +1,35 @@
-<ul>
+<table class="table">
+  <tr>
+    <th>Image</th>
+    <th>Type</th>
+    <th>Subtype</th>
+    <th>Brand</th>
+    <th>Color</th>
+  </tr>
 
 <% @articles.each do |article| %>
-  <li>
-  <a href="/articles/<%= article.id %>">
-    <img src="<%= article.image_url %>" 
-    width=200px height=200px alt="article_<%= article.id %>"</img>
-  </a>
-  </li>
+  <tr>
+    <td>
+      <a href="/articles/<%= article.id %>">
+        <img src="<%= article.image_url %>" 
+        width=200px height=200px alt="article_<%= article.id %>"</img>
+      </a>
+    </td>
+    <td>
+      <%= article.article_type.name %>
+    </td>
+    <td>
+      <%= article.subtype %>
+    </td>
+    <td>
+      <%= article.brand %>
+    </td>
+    <td>
+      <%= article.color %>
+    </td>
+  </tr>
 <% end %>
-</ul>
-<a href="articles/new">New</a>
+</table>
+<div>
+  <a class="btn btn-large btn-block btn-warning" href="articles/new">New</a>
+</div>
