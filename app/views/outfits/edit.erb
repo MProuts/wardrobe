@@ -1,0 +1,35 @@
+<h1>Edit Outfit</h1>
+</div> <!-- no container -->
+
+<form action="/outfits/<%= @outfit.id %>" method="post">
+  <input type="hidden" name="_method" value="put">
+<div class="slider" for="top_id">
+  <a href="#" class="control_next">></a>
+  <a href="#" class="control_prev"><</a>
+  <ul>
+    <%= erb 'outfits/_edit_articles'.to_sym, :locals => { :articles => @tops } %>
+  </ul>
+</div>
+
+<div class="slider" for="bottom_id">
+  <a href="#" class="control_next">></a>
+  <a href="#" class="control_prev"><</a>
+  <ul>
+    <%= erb 'outfits/_edit_articles'.to_sym, :locals => { :articles => @bottoms } %>
+  </ul>
+</div>
+
+<div class="wrapper">
+  <div class="well">
+      <fieldset>
+        <legend>Date</legend>
+        <input type="date" name="outfit[date_worn]" value="<%= @outfit.date_worn %>">
+        <input id="submit_button" type="submit" class="btn btn-primary btn-large btn-block" 
+          value="Update">
+      </fieldset>
+    </div>
+  </div>
+</form>
+
+
+<div> <!-- no container -->
