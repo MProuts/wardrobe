@@ -53,4 +53,10 @@ class OutfitsController < ApplicationController
 
     erb :'outfits/colors'
   end
+
+  get '/random' do
+    @outfit = Outfit.random
+    
+    erb :'outfits/show'
+  end
 end

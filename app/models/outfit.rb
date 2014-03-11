@@ -8,6 +8,7 @@ class Outfit < ActiveRecord::Base
       outfit.date_worn = Date.today
       outfit.outfit_articles.create(:article => Article.random_top)
       outfit.outfit_articles.create(:article => Article.random_bottom)
+      outfit.save
     end
   end
 
