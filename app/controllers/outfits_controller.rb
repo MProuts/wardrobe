@@ -48,4 +48,9 @@ class OutfitsController < ApplicationController
     redirect to '/outfits'
   end
 
+  get '/colors' do
+    @outfits = Outfit.all
+
+    erb :'outfits/colors'
+  end
 end

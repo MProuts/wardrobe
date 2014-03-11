@@ -117,4 +117,11 @@ describe OutfitsController do
     end
   end
 
+  describe 'get /colors' do
+    it "should serve the request" do
+      get '/colors'
+
+      expect(last_response).to be_ok
+    end
+  end
 end

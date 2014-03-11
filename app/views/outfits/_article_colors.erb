@@ -1,0 +1,8 @@
+<% articles.each do |article| %>
+  <li id="<%= article.id %>">
+  <a href="/articles/<%= article.id %>">
+    <img src="<%= article.image_url %>" width=200px height=200px alt="article_<%= article.id %>"</img>
+    <input type="checkbox" name="outfit[article_ids][]" value="<%= article.id %>">
+  </a>
+  </li>
+<% end %>

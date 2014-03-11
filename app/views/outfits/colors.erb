@@ -1,0 +1,11 @@
+<h1>Color History</h1>
+<div class="well">
+  <div class="colors clearfix">
+    <% @outfits.each do |outfit| %>
+      <% outfit.articles.each do |article| %>
+        <div><%= article.color_tag %></div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+
